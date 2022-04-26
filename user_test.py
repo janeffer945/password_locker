@@ -9,11 +9,11 @@ class TestUser(unittest.TestCase):
       Args:
         unittest.TestCase: TestCase class that helps in creating test cases
       '''
-         def setUp(self):
+      def setUp(self):
           """
           Set up method to run before each test cases.
           """
-           self.new_user = User("janefer", "janeffer945")# create user object
+          self.new_user = User("janefer", "janeffer945")# create user object
 
       def test__init(self):
           """
@@ -29,7 +29,7 @@ class TestUser(unittest.TestCase):
           '''
           self.new_user.save_user() # saving the new user
           self.assertEqual(len(User.user_list),1)
- def test_save_multiple_user(self):
+      def test_save_multiple_user(self):
         '''
         test_save_multiple_user to check if we can save multiple user
         objects to our user_list
@@ -39,12 +39,12 @@ class TestUser(unittest.TestCase):
         # new user
         test_user.save_user()
         self.assertEqual(len(User.user_list),2)
- def tearDown(self):
+      def tearDown(self):
         '''
         tearDown method that does clean up after each test case has run.
         '''
         User.user_list = []
- def test_save_multiple_user(self):
+      def test_save_multiple_user(self):
         '''
         test_save_multiple_user to check if we can save multiple user
         objects to our user_list
@@ -53,7 +53,7 @@ class TestUser(unittest.TestCase):
         test_user = User("abby", "abbis")
         test_user.save_user()
         self.assertEqual(len(User.user_list),2) 
-   def test_delete_user(self):
+      def test_delete_user(self):
         '''
         test_delete_user to test if we can remove a contact from our user list
         '''
