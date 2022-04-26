@@ -17,3 +17,15 @@ def find_credential(acc_name):
     find a credential from the credential list using account
     """
     return Credentials.find_credential(acc_name)
+def display_accounts():
+    '''
+    Function that returns all the saved accounts
+    '''
+    return Credentials.display_accounts()
+
+
+def del_account(Credentials):
+    '''
+    Function to delete an account
+    '''
+    Credentials.delete_account()
