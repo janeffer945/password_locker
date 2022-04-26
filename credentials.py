@@ -13,7 +13,8 @@ class Credentials:
         self.acc_name = acc_name
         self.user_name = user_name
         self.user_password = user_password
-@classmethod
+
+    @classmethod
     def display_accounts(cls):
         '''
         method that returns the accounts_list
@@ -31,4 +32,15 @@ class Credentials:
         Credentials.accounts_list.append(self)
     @classmethod
     def find_credential(cls,acc_name):
-       
+       '''
+        find_credential method finds account 
+        '''
+       for credential in cls.accounts_list:
+            if credential.acc_name==acc_name:
+                return credential
+    @classmethod
+    def delete_account(self):
+        '''
+        method that deletes a saved account from the account list
+        '''
+        Credentials.accounts_list.remove(self)   
