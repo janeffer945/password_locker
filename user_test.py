@@ -74,6 +74,31 @@ class TestUser(unittest.TestCase):
         test_user.save_user()
 
         found_user = User.find_by_user_name("abby")
-        
+        self.assertEqual(found_user.user_name,test_user.user_name)   
+       
+
+      def test_user_exists(self):
+        '''
+        test to check if we can return a Boolean  if we cannot find the user.
+        '''
+
+        self.new_user.save_user()
+        test_user = User("abby", "abbis")#new user
+        test_user.save_user()
+
+        user_exists = User.user_exist("abby")
+        self.assertTrue(user_exists)
+
+
+      def test_display_all_users(self):
+        '''
+        method that returns a list of users saved
+        '''
+
+        self.assertEqual(User.display_users(),User.user_list)
+
+
+
+
         
         
