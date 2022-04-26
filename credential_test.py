@@ -20,7 +20,19 @@ class TestCredentials(unittest.TestCase) :
         self.assertEqual(self.new_account.acc_name, "Facebook")
         self.assertEqual(self.new_account.user_name, "janeffer")
         self.assertEqual(self.new_account.user_password,"0746397994")
-        
+    def test_display_all_accounts(self):
+        '''
+        method that returns a list of saved accounts
+        '''
+
+        self.assertEqual(Credentials.display_accounts(), Credentials.accounts_list)
+
+
+    def test_save_all_accounts(self):
+        '''
+        method that saves a new account
+        '''
+        self.new_account.save_credential()  
         
         
        
