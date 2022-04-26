@@ -44,7 +44,14 @@ class TestCredentials(unittest.TestCase) :
         '''
         self.new_account.save_credential()
         test_account = Credentials("Facebook","janeffer", "0746397994")
-         
+        test_account.save_credential()
+
+        self.new_account.delete_account()
+        self.assertEqual(len(Credentials.accounts_list), 1)
+
+
+if __name__ == '__main__':
+    unittest.main()
 
        
        
