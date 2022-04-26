@@ -33,7 +33,18 @@ class TestCredentials(unittest.TestCase) :
         method that saves a new account
         '''
         self.new_account.save_credential()  
-        
-        
+        test_account = Credentials("Facebook","janeffer","0746397994") #new account
+        test_account.save_credential()
+        self.assertEqual(len(Credentials.accounts_list), 3)
+
+
+    def test_delete_account(self):
+        '''
+        a test to know if we can delete an account.
+        '''
+        self.new_account.save_credential()
+        test_account = Credentials("Facebook","janeffer", "0746397994")
+         
+
        
        
