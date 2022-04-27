@@ -1,46 +1,67 @@
+import random
+import string
+
 class Credentials:
+    """class that generate new instances of credentials
     """
-    Class that generates new instances of credentials.
-    """
-
-    accounts_list = [] 
+    credentials__list = []
     
-    def __init__(self, acc_name, user_name, user_password):
-        '''
-        method that defines variables to be used
-        '''
+    def __init__(self,application_name,account_username,account_password):
+        """method that helps us define properties for our objects_summary_
 
-        self.acc_name = acc_name
-        self.user_name = user_name
-        self.user_password = user_password
-
-    @classmethod
-    def display_accounts(cls):
-        '''
-        method that returns the accounts_list
-        '''
-        return cls.accounts_list
+        Args:
+            application_name (_type_): _description_
+            account_username (_type_): _description_
+            account_password (_type_): _description_
+        """
+        self.application_name = application_name
+        self.account_username = account_username
+        self.account_password = account_password
+    def  add_credentials(self):
+        """method that saves credentials into credentials_list
+        """
+        Credentials.credentials__list.append(self)
     
+    def  delete_credentials(self):
+        '''
+        delete_credentials method that deletes credentials from credential_list
+        ''' 
+        Credentials.credentials__list.remove(self)
         
     @classmethod
-    def save_credential(self):
+    def  find_by_application_name(cls,application_name):
+        """method  that takes in application name and returns the credentials for the said application
 
-        '''
-        save_credential method saves account objects into accounts_list
-        '''
-
-        Credentials.accounts_list.append(self)
-    @classmethod
-    def find_credential(cls,acc_name):
-       '''
-        find_credential method finds account 
-        '''
-       for credential in cls.accounts_list:
-            if credential.acc_name==acc_name:
+        Args:
+            application_name: name of application to be found
+        """
+        for credential in Credentials.credentials__list:
+            if credential.application_name == application_name:
                 return credential
+
     @classmethod
-    def delete_account(self):
-        '''
-        method that deletes a saved account from the account list
-        '''
-        Credentials.accounts_list.remove(self)   
+    def credentials_exists(cls,application_name):
+        """method that checks if a credential exist from credential_list
+
+        Args:
+            application_name:name to search if an account exist
+        """
+        for credential in Credentials.credentials__list:
+            if credential.application_name == application_name:
+                return True
+        return False
+    
+    @classmethod
+    def  display_credentials(cls):
+        """ method that returns a list of all credentials
+        """
+        return Credentials.credentials__list
+    
+    def  generate_password(passwordLength=8):
+        """
+        method that generates a random password for the account user
+        Args:
+            passwordLenght: password length for the account user
+        """
+        password = string.ascii_uppercase + string.ascii_lowercase + string.digits
+        return "".join(random.choice(password)for i in range(passwordLength))

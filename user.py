@@ -1,79 +1,53 @@
-class User:
-    '''
-    Class that generates new instances of users
-    '''
 
-    user_list = [] #Empt user list
-
-    def __init__(self,user_name,pass_word):
+class Users:
+    """class that generates new instances of users
+    """
+    users_list = []
+    
+    def  __init__(self,username,login_password):
         """
-        The __init__ method helps us define proprties of our objects
+         method that helps us define properties for our object
         Args:
-            self.user_name = user_name
-            self.password = password
+            username :New username
+            login_password:New user password
         """
-        self.user_name = user_name
-        self.pass_word = pass_word
-
-
-              
-    def save_user(self):
-        '''
-        save_user method saves user objects into user_list
-        '''
-        User.user_list.append(self)
-
-    def delete_user(self):
-
-        '''
-        delete_user method deletes a saved user from the user_list
-        '''
-
-        User.user_list.remove(self)  
-
-
-
-    def save_user(self):
-        '''
-        save_contact method saves contact objects into contact_list
-        '''
-        User.user_list.append(self)
-
+        self.username = username
+        self.login_password = login_password
+             
+    def  add_user(self):
+        """
+        add user details method saves user objects
+        """
+        Users.users_list.append(self)
     
-    
+    def  delete_user(self):
+        """
+        method removes user details
+        """  
+        Users.users_list.remove(self) 
+        
     @classmethod
-    def find_by_user_name(cls,user_name):
-            '''
-            Method that takes in a username and returns a user that matches that username.
-            Args:
-                username: name to search for
-            Returns :
-                user of person that matches the username.
-            '''
+    def  find_by_username(cls,username):
+        """
+        authenticate user 
 
-            for user in cls.user_list:
-                if user.user_name == user_name:
-                    return user        
-       
+        Args:
+            username:name used by user to login in
+        """
+        for user in Users.users_list:
+            if user.username == username:
+                return user
+            
     @classmethod
-    def user_exist(cls,user_name):
-            '''
-            Method that checks if a user exists from the user list.
-            Args:
-                user_name: user_name to search if it exists
-            Returns :
-                Boolean: True or false if the user exists
-            '''
-            for user in cls.user_list:
-                if user.user_name == user_name:
-                        return True
+    def  user_exists(cls,username,login_password):
+        """
+        authenticate user password by checking if the user exist
 
-            return False  
-
-
-    @classmethod
-    def display_users(cls):
-        '''
-        method that returns the user list
-        '''
-        return cls.user_list  
+        Args:
+            username :username used to login
+            login_password:password for the user
+        """
+        for user in Users.users_list:
+           if user.username == username and user.login_password == login_password:
+                return True
+        return False   
